@@ -5,8 +5,9 @@ import json.tool
 import hashlib
 
 def cifrar_senha(senha):
-    return hashlib.sha256(senha.encode('utf-8')).hexdigest()
-
+    senha_cifrada = senha.encode()
+    funcao_sha256 = hashlib.sha256(senha_cifrada)
+    return funcao_sha256.hexdigest()
 
 def ler_arquivo_matriz():
     with open("matriz_controle_acesso.json", mode="r") as arquivo:
