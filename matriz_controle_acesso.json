@@ -18,5 +18,32 @@
                 "config.sys"
             ]
         }
+    },
+    {
+        "nome": "juli",
+        "permissoes": {
+            "leitura": [],
+            "escrita": [],
+            "exclusao": [],
+            "geral": []
+        }
+    },
+    {
+        "nome": "mark",
+        "permissoes": {
+            "leitura": [],
+            "escrita": [],
+            "exclusao": [],
+            "geral": []
+        }
+    },
+    {
+        "nome": "aron",
+        "permissoes": {
+            "leitura": [],
+            "escrita": [],
+            "exclusao": [],
+            "geral": []
+        }
     }
 ]

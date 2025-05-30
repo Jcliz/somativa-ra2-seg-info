@@ -2,5 +2,17 @@
     {
         "nome": "joao",
         "senha": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
+    },
+    {
+        "nome": "juli",
+        "senha": "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75"
+    },
+    {
+        "nome": "mark",
+        "senha": "8cce10345c5e1de90d277b9869465f5972b828afbbbfd7ef08b1d835eedee993"
+    },
+    {
+        "nome": "aron",
+        "senha": "ceaa28bba4caba687dc31b1bbe79eca3c70c33f871f1ce8f528cf9ab5cfd76dd"
     }
 ]
