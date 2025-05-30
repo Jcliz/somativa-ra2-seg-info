@@ -1,1 +1,31 @@
-[{"nome": "joao", "permissoes": {"escrita": ["musica.mp3"], "leitura": ["notas.csv", "musica.mp3"], "exclusao": ["musica.mp3"], "geral": ["notas.csv", "musica.mp3", "config.sys"]}}, {"nome": "pedro", "permissoes": {"leitura": ["exe.exe"], "escrita": ["exe.exe"], "exclusao": ["exe.exe"], "geral": ["exe.exe"]}}]
+[
+    {
+        "nome": "joao",
+        "permissoes": {
+            "escrita": [
+                "musica.mp3"
+            ],
+            "leitura": [
+                "notas.csv",
+                "musica.mp3"
+            ],
+            "exclusao": [
+                "musica.mp3"
+            ],
+            "geral": [
+                "notas.csv",
+                "musica.mp3",
+                "config.sys"
+            ]
+        }
+    },
+    {
+        "nome": "teste",
+        "permissoes": {
+            "leitura": [],
+            "escrita": [],
+            "exclusao": [],
+            "geral": []
+        }
+    }
+]

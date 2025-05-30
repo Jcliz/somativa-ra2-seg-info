@@ -30,7 +30,7 @@ def listar_arquivos(usuario):
 def salvar_resultados(permissoes):
     # Abre arquivo para escrita para salvarmos o resultado das nossas operações
     with open('matriz_controle_acesso.json', mode='w') as arquivo:
-        permissoes_serializado = json.dumps(permissoes)
+        permissoes_serializado = json.dumps(permissoes, indent=4)
         arquivo.write(permissoes_serializado)
 
 
@@ -41,9 +41,13 @@ def registrar_usuario(dados_json):
 
     if buscar_usuario(login, dados_json) is not None:
         print("\nO usuário já foi criado anteriormente.")
-        return dados_json #dados sem alterações
+        return dados_json 
 
     senha = str(input("Digite a senha: "))
+
+    if not len(senha) == 4:
+        print(f"\nA senha precisa ter 4 dígitos.")
+        return dados_json
 
     usuario = {
         'nome': login,
@@ -54,7 +58,7 @@ def registrar_usuario(dados_json):
     usuarios.append(usuario)
 
     with open("usuarios.json", "w") as arquivo:
-        json.dump(usuarios, arquivo)
+        json.dump(usuarios, arquivo, indent=4)
 
     #recarrega os dados
     dados_json = ler_arquivo_usuarios()
