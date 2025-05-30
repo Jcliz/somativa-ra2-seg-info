@@ -18,14 +18,5 @@
                 "config.sys"
             ]
         }
-    },
-    {
-        "nome": "teste",
-        "permissoes": {
-            "leitura": [],
-            "escrita": [],
-            "exclusao": [],
-            "geral": []
-        }
     }
 ]

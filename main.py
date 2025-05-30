@@ -2,6 +2,10 @@
 
 import json
 import json.tool
+import hashlib
+
+def cifrar_senha(senha):
+    return hashlib.sha256(senha.encode('utf-8')).hexdigest()
 
 
 def ler_arquivo_matriz():
@@ -55,7 +59,7 @@ def registrar_usuario(dados_json):
 
     usuario = {
         'nome': login,
-        'senha': senha
+        'senha': cifrar_senha(senha)
     }
 
     usuarios = ler_arquivo_usuarios()
@@ -197,7 +201,7 @@ def __init__():
                     login_cadastrado = dados_json[busca]['nome']
                     senha_cadastrada = dados_json[busca]['senha']
 
-                    if login == login_cadastrado and senha == senha_cadastrada:
+                    if login == login_cadastrado and cifrar_senha(senha) == senha_cadastrada:
                         print(f"\nBem vindo(a) {login}!")
                         anonimo = False
 
