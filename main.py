@@ -39,6 +39,10 @@ def registrar_usuario(dados_json):
 
     login = str(input("\nDigite o login: "))
 
+    if not len(login) == 4:
+        print(f"\nO login precisa ter 4 dígitos.")
+        return dados_json
+
     if buscar_usuario(login, dados_json) is not None:
         print("\nO usuário já foi criado anteriormente.")
         return dados_json 
