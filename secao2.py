@@ -25,18 +25,32 @@ def forca_bruta(hash_alvo):
                 return senha_tentativa
     return None
 
+def forca_bruta_duplo(hash_duplo):
+    for tamanho in range(1, tamanho_maximo + 1):
+        for tentativa in itertools.product(charset, repeat=tamanho):
+            senha_tentativa = ''.join(tentativa)
+            hash_tentativa = sha256_string(senha_tentativa)
+            segundo_hash = sha256_string(hash_tentativa)
+            if segundo_hash == hash_duplo:
+                return senha_tentativa
+    return None
+
 #minha implementação    
 tempo_total = 0
 
 for usuario in usuarios:
     print(f"\nTentando descobrir a senha de {usuario['nome']}...")
-    hash_alvo = usuario['senha'] if len(
-        usuario['senha']) == 64 else sha256_string(usuario['senha'])
+    hash_alvo = usuario['senha'] 
 
     #minha implementação
     quebra_inicio = time.time()
 
-    senha_encontrada = forca_bruta(hash_alvo)
+    if len(hash_alvo) == 64:
+        senha_encontrada = forca_bruta(hash_alvo)
+        if not senha_encontrada:
+            senha_encontrada = forca_bruta_duplo(hash_alvo)
+    else:
+        senha_encontrada = forca_bruta(sha256_string(hash_alvo))
 
     #minha implementação
     quebra_fim = time.time()
