@@ -2,21 +2,10 @@
     {
         "nome": "joao",
         "permissoes": {
-            "escrita": [
-                "musica.mp3"
-            ],
-            "leitura": [
-                "notas.csv",
-                "musica.mp3"
-            ],
-            "exclusao": [
-                "musica.mp3"
-            ],
-            "geral": [
-                "notas.csv",
-                "musica.mp3",
-                "config.sys"
-            ]
+            "leitura": [],
+            "escrita": [],
+            "exclusao": [],
+            "geral": []
         }
     },
     {

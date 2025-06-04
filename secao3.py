@@ -6,16 +6,18 @@ import hashlib
 
 def cifrar_senha(senha):
     senha_cifrada = senha.encode()
-    hash1 = hashlib.sha256(senha_cifrada).hexdigest()
+    hash_sha256 = hashlib.sha256(senha_cifrada).hexdigest()
 
-    hash2 = hashlib.sha256(hash1.encode()).hexdigest()
-    return hash2
+    for contador in range(100):
+        hash_sha256 = hashlib.sha256(hash_sha256.encode()).hexdigest()
+
+    return hash_sha256
 
 def ler_arquivo_matriz():
     with open("matriz_controle_acesso.json", mode="r") as arquivo:
         # Lê o conteúdo do arquivo (arquivo.read()) e deserializa o
         # JSON para dicionário do Python (json.loads())
-        return json.loads(arquivo.read())
+        return json.loads(arquivo.read())   
 
 
 def ler_arquivo_usuarios():

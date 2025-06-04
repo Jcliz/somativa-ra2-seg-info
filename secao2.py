@@ -10,7 +10,7 @@ with open('usuarios.json', 'r') as f:
     usuarios = json.load(f)
 
 charset = string.ascii_letters + string.digits
-tamanho_maximo = 4
+tamanho_maximo = 64
 
 def sha256_string(s):
     return hashlib.sha256(s.encode()).hexdigest()
@@ -22,16 +22,6 @@ def forca_bruta(hash_alvo):
             senha_tentativa = ''.join(tentativa)
             hash_tentativa = sha256_string(senha_tentativa)
             if hash_tentativa == hash_alvo:
-                return senha_tentativa
-    return None
-
-def forca_bruta_duplo(hash_duplo):
-    for tamanho in range(1, tamanho_maximo + 1):
-        for tentativa in itertools.product(charset, repeat=tamanho):
-            senha_tentativa = ''.join(tentativa)
-            hash_tentativa = sha256_string(senha_tentativa)
-            segundo_hash = sha256_string(hash_tentativa)
-            if segundo_hash == hash_duplo:
                 return senha_tentativa
     return None
 
@@ -47,8 +37,6 @@ for usuario in usuarios:
 
     if len(hash_alvo) == 64:
         senha_encontrada = forca_bruta(hash_alvo)
-        if not senha_encontrada:
-            senha_encontrada = forca_bruta_duplo(hash_alvo)
     else:
         senha_encontrada = forca_bruta(sha256_string(hash_alvo))
 
@@ -62,7 +50,7 @@ for usuario in usuarios:
                 #minha implementação
               f"Tempo de quebra: {quebra_tempo:.2f} segundos")
     else:
-        print("Senha não encontrada dentro dos critérios de força bruta.")
+        print("O algoritmo não conseguiu decifrar a senha.")
 
     
 
