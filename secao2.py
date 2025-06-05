@@ -8,7 +8,7 @@ import time
 
 with open('usuarios.json', 'r') as f:
     usuarios = json.load(f)
-
+ 
 charset = string.ascii_letters + string.digits
 tamanho_maximo = 64
 

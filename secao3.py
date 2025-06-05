@@ -13,16 +13,20 @@ def cifrar_senha(senha):
     return hash_sha256
 
 def ler_arquivo_matriz():
-    with open("matriz_controle_acesso.json", mode="r") as arquivo:
-        # Lê o conteúdo do arquivo (arquivo.read()) e deserializa o
-        # JSON para dicionário do Python (json.loads())
-        return json.loads(arquivo.read())   
-
+    try:
+        with open("matriz_controle_acesso.json", mode="r") as arquivo:
+            # Lê o conteúdo do arquivo (arquivo.read()) e deserializa o
+            # JSON para dicionário do Python (json.loads())
+            return json.loads(arquivo.read())   
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
 
 def ler_arquivo_usuarios():
-    with open("usuarios.json", "r") as arquivo:
-        return json.loads(arquivo.read())
-
+    try:
+        with open("usuarios.json", "r") as arquivo:
+            return json.loads(arquivo.read())
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
 
 def listar_arquivos(usuario):
     arquivo_permitido = usuario['permissoes'].get('geral')
@@ -175,6 +179,7 @@ def menu_opcoes(login):
 def __init__():
     try:
         dados_json = ler_arquivo_usuarios()
+        ler_arquivo_matriz()
 
         print("\n Seja bem-vindo ao controle de acesso! :D")
 
@@ -196,6 +201,10 @@ def __init__():
                 continue
 
             if opcao == 1.0:
+                if not dados_json:
+                    print("\nNenhum usuário cadastrado. Por favor, cadastre-se primeiro.")
+                    continue
+
                 login = str(input("\nDigite o login: "))
                 senha = str(input("Digite a senha: "))
 
