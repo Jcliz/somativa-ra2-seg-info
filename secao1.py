@@ -1,7 +1,6 @@
 # aluno: João Pedro Cardoso de Liz
 
 import json
-import json.tool
 import hashlib
 
 def cifrar_senha(senha):
